@@ -1,0 +1,48 @@
+<h2>People</h2>
+<table class="table">
+  <thead class="table__head">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Home World</th>
+      <th>Birth Year</th>
+      <th>Eye Color</th>
+      <th>Hair Color</th>
+      <th>Height</th>
+      <th>Skin Color</th>
+    </tr>
+  </thead>
+
+
+  <tbody class="table__body">
+
+    <tr *ngFor="let person of people;
+                let i = index;
+                trackBy:trackByName;
+                [class.selected]="person === selectedPerson" (click)="onSelect(person)"
+                ">      <!-- opmaak-->
+
+      <td>{{ i+1 }}</td> <!-- de id nummer optellen  -->
+      <td>{{ person.name }}</td> <!-- van telkens de opgetelde id zoekt hij de person.name,gender,..   -->
+      <td>{{ person.gender }}</td>
+      <td>{{ person.homeworld }}</td>
+      <td>{{ person.birth_year}}</td>
+      <td>{{ person.eye_color}}</td>
+      <td>{{ person.hair_color}}</td>
+      <td>{{ person.height}}</td>
+      <td>{{ person.skin_color}}</td>
+    </tr>
+
+  </tbody>
+
+</table>
+
+<div *ngIf="selectedHero">
+  <h2>{{selectedHero.name}} details!</h2>
+  <div><label>id: </label>{{selectedHero.id}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+  </div>
+</div>
